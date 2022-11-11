@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>干支チェッカー_坂本</title>
+    <style>
+        header {
+            text-align: center;
+        }
+
+        main {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+        }
+
+        main .box1 {
+            text-align: center;
+            line-height: 3;
+            font-size: 20px;
+        }
+
+        main .box1 .input_y {
+            text-align: center;
+            width: 180px;
+            height: 30px;
+            font-size: 14px;
+        }
+
+        main .box1 .btn{
+            width: 220px;
+            height: 40px;
+            background-color: #00bfff;
+            border: 0;
+            border-radius: 5px;
+            font-size: 14px;
+            color: white;
+            transition: 2s;
+        }
+
+        main .box1 .btn:hover {
+            opacity: 0.6;
+ /*           transition: 2s;*/
+        }
+
+        main .box2 {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        main .box2 #img_eto {
+            width: 250px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>干支チェッカー</h1>
+    </header>
+
+    <main>
+        <div class="box1">
+            <form name="checker">
+                西暦
+                <input type="number" name="textbox" class="input_y">
+                年<br>
+                <input type="button" value="この年の干支をチェック！" onclick="check() " class="btn">
+            </form>
+        </div>
+        <div class="box2">
+            <h2 id="text_eto"></h2>
+            <img id="img_eto" src="">
+        </div>
+    </main>
+
+    <script>
+        function check() {
+            var year = document.checker.textbox.value;
+            if (year == "") {
+                document.getElementById("text_eto").innerHTML = "年数が入力されていません。";
+                document.getElementById("img_eto").src = "";
+            } else if (year <= 0) {
+                document.getElementById("text_eto").innerHTML = "年数が正しく入力されていません。";
+                document.getElementById("img_eto").src = "";
+            } else {
+                a = year % 12;
+                document.getElementById("text_eto").innerHTML = year + "年は" + eto[a] + "年です。";
+                document.getElementById("img_eto").src = imgList[a];
+            }
+        }
+
+        var eto = ["申", "酉", "戌", "亥", "子", "丑", "寅", "卯", "辰", "巳", "午", "未",];
+
+        var imgList = ["img/eto9.png", "img/eto10.png", "img/eto11.png", "img/eto12.png",
+            "img/eto1.png", "img/eto2.png", "img/eto3.png", "img/eto4.png", "img/eto5.png",
+            "img/eto6.png", "img/eto7.png", "img/eto8.png"];
+
+    </script>
+</body>
+
+</html>
